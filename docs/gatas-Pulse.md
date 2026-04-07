@@ -1,7 +1,7 @@
 # GA/TAS PULSE Builder's Guide
 
 GA/TAS Pulse is an easy to build with standard component version that has all the capabilities of GA/TAS,
-except it only uses one Tranceiver (SX1262) instead of two. It will still send and receive all the protocols and when a specific protocol is received, it will prioritice listing to protocols it receives. With a build in charger and a battery lifetime of around 20Hours it is the ideal no worries comopanion Traffic Awareness system.
+except it only uses one Tranceiver (SX1262) instead of two. It will still send and receive all the protocols and when a specific protocol is received, it will prioritice listing to protocols it receives. With a build in charger and a battery lifetime of around 20Hours it is the ideal no worries companion Traffic Awareness system.
 
 
 ![GA/TAS Pulse in an Aquila A210](images/gatas-Pulse/1.png){width=800}
@@ -15,7 +15,7 @@ This document provides step-by-step instructions to:
 
 - Solder the necessary header pins onto the Pico.  
 - 3D print and assemble a protective case for the device.
-- Flash the GA/TAS firmware onto a Raspberryco.
+- Flash the GA/TAS firmware onto a Raspberry Pico.
 - Final soldering of charger, battery and switch
 
 ## Prerequisites
@@ -93,6 +93,10 @@ The design is created in OpenSCAD, and the filename of this project is `gatas_pu
 2. Start the printing process.
 3. Once printing is complete, carefully remove the parts from the build plate.
 4. Clean up the print if required.
+
+also remove the high altitude parts### 2.4: Material Considerations for Flight Use
+
+If you plan to use this device in an aircraft, consider using **ABS** instead of PET-G as your preferred filament material. ABS offers better temperature stability at higher temperatures.
 
 ---
 

@@ -1,7 +1,7 @@
 # GA/TAS PULSE Modules
 
-GA/TAS conspicuity is build around a module structure, and each module performs a specific task.
-From the web interface some moduleds can be configured, can be monitored and can be enabled or disabled.
+GA/TAS conspicuity is built around a module structure, and each module performs a specific task.
+From the web interface some modules can be configured, can be monitored and can be enabled or disabled.
 
 - 👀 -> Monitoring of a module
 - 🛠️ -> Configuration of a module
@@ -9,16 +9,16 @@ From the web interface some moduleds can be configured, can be monitored and can
 
 ### About monitoring
 
-Each moduels provides monitoring of various variables. If the variable ends with 'Err' then an error occured, something
+Each module provides monitoring of various variables. If the variable ends with 'Err' then an error occured, something
 that was not expected as they should stay at zero.
-However, low values of *Err variables is accepted, all errors are cracefully handlesm retried etc Ir does not mean the
-system in 'in' error, just that it happened and it was noticed, and processing continued.
+However, low values of *Err variables is accepted, all errors are carefully handled, retried etc. It does not mean the
+system is in error, just that it happened and it was noticed, and processing continued.
 
 ### Decide if a modules can be enabled or disabled
 
 All modules can be by default be enabled. When enabled, they don't consume (or hardly consume) any resources from the
 system, except some memory.
-The following modules can stay disabled unless you really need them, when you need them you now :)
+The following modules can stay disabled unless you really need them, when you need them you know :)
 
 * ADSBDecoder
 * AirConnect
@@ -26,7 +26,7 @@ The following modules can stay disabled unless you really need them, when you ne
 * Dump1090Client
 
 !!! info
-    The below information is provided for to help you understand how the system works, it is not required to know the below by heart, in the Setup Up instructions it's explained what you have to do. Don't be alarmed, I kept this at a minimal.
+    The below information is provided to help you understand how the system works, it is not required to know the below by heart, in the Setup instructions it's explained what you have to do. Don't be alarmed, I kept this at a minimal.
   
 ## Modules
 

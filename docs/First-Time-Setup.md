@@ -3,7 +3,7 @@
 This guide provides step-by-step instructions for setting up GA/TAS.
 
 !!! Tip
-    It's highly recommended to also have the status Led connected, it will give you instal feedback on some of the basic state of GA/TAS.
+    It's highly recommended to also have the status Led connected, it will give you install feedback on some of the basic state of GA/TAS.
 
 ## Use case 1: You want to receive additional traffic data via gatas Connect, you have your EFB running on your phone
 
@@ -36,7 +36,7 @@ flowchart TB
 ![WIFI Configuration](images/First-Time-Setup/image-2.png)
 
 !!! TIP
-    In Additional to my phone's hotspot I also add my WIFI Network at home so I can configure GA/TAS on my webbrowser on my computer. Since GA/TAS will try connnect to any available network in the list. Once a connect drops, it will try other networks seemlessly. When I just drive away from home, it will connect to my hotspot.
+    In Additional to my phone's hotspot I also add my WIFI Network at home so I can configure GA/TAS on my webbrowser on my computer. Since GA/TAS will try connect to any available network in the list. Once a connect drops, it will try other networks seemlessly. When I just drive away from home, it will connect to my hotspot.
 
 2) Enable gatasConnect module
 
@@ -46,8 +46,8 @@ flowchart TB
 ![alt text](images/First-Time-Setup/image.png)
 
 !!! note
-    **Iphone Limitations**
-    IPhones use connection isolation when used as a hotspot this means that unfortunately we cannot provide GDL90 data to an other device connected to the hotspot.
+    **iPhone Limitations**
+    iPhones use connection isolation when used as a hotspot this means that unfortunately we cannot provide GDL90 data to an other device connected to the hotspot.
     However, if the other device supports Bluetooth BLE, you can use that to provide NMEA data to your EFB, SkyDemon allows you to do this.
 
 

@@ -7,7 +7,7 @@ This guide provides step-by-step instructions for installing firmware on a Raspb
 ## Step-by-Step Instructions
 
 ### 1. Download the Firmware File
-- Visit the [GA/TAS Releases page](https://github.com/rvt/OpenAce/releases) to download the appropriate firmware file (`gatas-rpxxxx.uf2`).
+- Visit the [GA/TAS Releases page](https://github.com/rvt/OpenAce/releases/latest) to download the appropriate firmware file (`gatas-rpxxxx.uf2`).
 - Ensure you download the correct version for your Raspberry Pico model:
   - **RP2040** or **RP2350**.
 
@@ -38,7 +38,7 @@ This guide provides step-by-step instructions for installing firmware on a Raspb
 ---
 
 ## Summary of Steps
-1. Download the `gatas-rpxxxx.uf2` file from the [GA/TAS Releases page](https://github.com/rvt/OpenAce/releases).
+1. Download the `gatas-rpxxxx.uf2` file from the [GA/TAS Releases page](https://github.com/rvt/OpenAce/releases/latest).
 2. Set GA/TAS in boot mode via the UI
 3. Release the BOOTSEL button once connected.
 4. Copy the `gatas-rpxxxx.uf2` file to the Pico's mass storage drive.

@@ -12,7 +12,7 @@
     There are two ways to find out the IP address of GA/TAS.
 
     - Connect a serial terminal like [https://webserial.io/](https://webserial.io/) The IP address is logged when GA/TAS starts up.
-    - When you did setup GA/TAS Connect with your pincode, the current IP address is shown on the web interface at [https://gatas.vantwisk.nl](https://gatas.vantwisk.nl) after entering your pincode and GA/TAS has a GPS Fix and you allow your browser to lookup it's position. This works best on a mobile phone, however it also worked with my Local Browser on my Computer.
+    - When you did setup GA/TAS Connect with your pincode, the current IP address is shown on the web interface at [https://gatas.vantwisk.nl](https://gatas.vantwisk.nl) after entering your pincode and GA/TAS has a GPS Fix and you allow your browser to lookup its position. This works best on a mobile phone, however it also worked with my Local Browser on my Computer.
 
 ??? question "I have connected to the LED, what does the flash pattern mean?"
     The LED indicates **two independent states**:
@@ -41,7 +41,7 @@
     
     > [!WARNING]
     > **DDB Accuracy**
-    > The DDB is not always update-to-date and thus not always correct. Leave it off if you only care about if a aircraft is in range, not what the exact registration is.
+    > The DDB is not always up-to-date and thus not always correct. Leave it off if you only care about if a aircraft is in range, not what the exact registration is.
 
 ??? question "After I turn off my mobile hotspot, GA/TAS does not create its own hotspot. Why?"
     GA/TAS always tries to connect to any known or available Wi-Fi network first.
@@ -53,12 +53,12 @@
     This is unfortunately not possible, iPhone creates a hotspot with network isolation. This means that unfortunately we cannot provide GDL90 data to another device connected to the hotspot. However, if the other software supports Bluetooth BLE, you can use that to provide NMEA data to your EFB, SkyDemon allows you to do this, ForeFlight does not.
 
 ??? question "I use a Mobile Router, and my EFB on my IPAD does not receive GDL90 data"
-    The most lickly reason is that your EFB is not ForeFlight. if you use EasyVFR or SkyDemon, then these EFB's don't advertise
-    themselve like ForeFlight would do. That means, with ForeFLight we use the xetnded GDl90 spec, and we receive the IP of the EFB.
-    With SkyDemon or EasyVFR you unfortunatly need to manually configure the IP of the EFB.
+    The most likely reason is that your EFB is not ForeFlight. if you use EasyVFR or SkyDemon, then these EFB's don't advertise
+    themselves like ForeFlight would do. That means, with ForeFlight we use the extended GDL90 spec, and we receive the IP of the EFB.
+    With SkyDemon or EasyVFR you unfortunately need to manually configure the IP of the EFB.
     You can do this in the gdlOverUDP module. Simply fill in the IP address if the tablet/phone your RUN the EFB on.
     You can configure up to 2 additional EFB's for GDL90 traffic.
-    In the below example, I als un a EFB on IP 192.168.178.191, and GA/TAS is more than happy to send GDL90 data to that IP.
+    In the below example, I also run a EFB on IP 192.168.178.191, and GA/TAS is more than happy to send GDL90 data to that IP.
     ![GDL Over UDP Configuration](images/FAQ/image.png)
     
 ??? question "What are the big and small dots I am seeing at some of the protocols?"

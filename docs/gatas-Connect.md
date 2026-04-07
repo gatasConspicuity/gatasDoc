@@ -71,7 +71,7 @@ To switch between multiple configured aircraft, you must either:
 1. In the GA/TAS configuration, set a PIN code with a value between **1000** and **999999**.
 
 
-![Gatas Connect Cofnguration](images/gatasConnectConfig.png){width=640}
+![Gatas Connect Configuration](images/gatasConnectConfig.png){width=640}
 
 2. Open a browser and navigate to:  (url may change in future)
    [https://gatas.vantwisk.nl](https://gatas.vantwisk.nl)
