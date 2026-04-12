@@ -109,3 +109,85 @@ flowchart TD
 ```
 
 Setup is exactly as in **Use case 1**
+
+## Use case 4: Groundstation mode
+
+In groundstation mode, GA/TAS is installed at an airfield and acts as a stationary transmitter. It receives traffic data via gatasConnect (typically MLAT data) over Wi-Fi and rebroadcasts it over ADS-L O-Band for up to 10 aircraft in the vicinity.
+
+### Regular airfield
+
+At a regular airfield, the groundstation receives internet traffic data and transmits it over ADS-L so that nearby aircraft equipped with ADS-L receivers can benefit from this data.
+
+```mermaid
+flowchart TB
+    ROUTER -->|🌐 Internet| GatasConnect
+    GATAS <-->|📶 Wi-Fi| ROUTER
+
+    GATAS -->|📡 868Mhz ADS-L O-Band| Aircraft1
+    GATAS -->|📡 868Mhz ADS-L O-Band| Aircraft2
+
+    GatasConnect[fa:fa-server gatasConnect<br />MLAT Data]
+    GatasConnect@{ shape: procs }
+
+    ROUTER[fa:fa-wifi Router / Hotspot]
+    ROUTER@{ shape: card }
+
+    GATAS[fa:fa-microchip GA/TAS<br />Groundstation Mode]
+    GATAS@{ shape: rounded}
+
+    Aircraft1[fa:fa-plane Aircraft with ADS-L]
+    Aircraft1@{ shape: card }
+    Aircraft2[fa:fa-plane Aircraft with ADS-L]
+    Aircraft2@{ shape: card }
+```
+
+### Setup
+
+1) Connect GA/TAS to a Wi-Fi network with internet access under *Client Configuration* in the WIFI Service.
+
+2) Enable the gatasConnect module and configure it with a pincode.
+
+3) Enable groundstation mode.
+
+![Groundstation mode configuration](images/First-Time-Setup/groundstation.png)
+
+### Glider field
+
+For glider fields, the groundstation works the same way but adds an important safety feature: you can configure an *altitude* to indicate the operating height of the glider field. This broadcasts a warning to surrounding traffic that a glider field is active at that location and altitude. This will be send over all enabled Procols (FANET/OGN/FLARM and ADS-L)
+
+```mermaid
+flowchart TB
+    ROUTER -->|🌐 Internet| GatasConnect
+    GATAS <-->|📶 Wi-Fi| ROUTER
+
+    GATAS -->|📡 868Mhz ADS-L O-Band| Aircraft1
+    GATAS -->|📡 868Mhz ADS-L O-Band| Aircraft2
+    GATAS -->|📡 868Mhz FLARM M-Band| Aircraft3
+
+    GatasConnect[fa:fa-server gatasConnect<br />MLAT Data]
+    GatasConnect@{ shape: procs }
+
+    ROUTER[fa:fa-wifi Router / Hotspot]
+    ROUTER@{ shape: card }
+
+    GATAS[fa:fa-microchip GA/TAS<br />Groundstation Mode<br />Glider Field Altitude Set]
+    GATAS@{ shape: rounded}
+
+    Aircraft1[fa:fa-plane Aircraft with ADS-L]
+    Aircraft1@{ shape: card }
+    Aircraft2[fa:fa-plane Aircraft with ADS-L]
+    Aircraft2@{ shape: card }
+    Aircraft3[fa:fa-plane Aircraft with FLARM]
+    Aircraft3@{ shape: card }
+```
+
+### Setup
+
+1) Follow the same setup steps as for a regular airfield groundstation.
+
+2) Configure the glider field altitude to indicate the operating height.
+
+![Glider field groundstation configuration](images/First-Time-Setup/groundstation-glider.png)
+
+!!! tip
+    Setting the altitude broadcasts a warning to surrounding traffic that a glider field is active, helping pilots avoid the area or exercise extra caution.
