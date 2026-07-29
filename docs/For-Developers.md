@@ -1,7 +1,7 @@
 
-This guide describes how to modify the GA/TAS codebase and create a new [UF2](https://github.com/microsoft/uf2) file for flashing onto the device.
+This guide describes how to modify the GATAS codebase and create a new [UF2](https://github.com/microsoft/uf2) file for flashing onto the device.
 
-For small changes or bug fixes, using the Docker container is often the easiest method. While compilation is slower and the resulting `gatas.uf2` file must be manually copied to your Pico, this approach requires only Docker and no other toolchain setup. The Docker build chain is daily tested [Github Action of GA/TAS](https://github.com/rvt/openace/actions)
+For small changes or bug fixes, using the Docker container is often the easiest method. While compilation is slower and the resulting `gatas.uf2` file must be manually copied to your Pico, this approach requires only Docker and no other toolchain setup. The Docker build chain is daily tested [Github Action of GATAS](https://github.com/rvt/openace/actions)
 
 !!! warning
     Regardless of your build method, you must have the source repository cloned locally.
@@ -95,7 +95,7 @@ export PATH="/Applications/ARM/bin:$PATH"
 export PICO_TOOLCHAIN_PATH="/Applications/ARM"
 ```
 
-The Toolchain is daily tested in github: [Github Action of GA/TAS](https://github.com/rvt/openace/actions)
+The Toolchain is daily tested in github: [Github Action of GATAS](https://github.com/rvt/openace/actions)
 
 
 ### Visual Studio Code Setup
@@ -151,7 +151,7 @@ adapter speed 12000
 
 ## Opening the Project in VS Code
 
-1. Launch a new VS Code window and open the root GA/TAS directory.
+1. Launch a new VS Code window and open the root GATAS directory.
 2. Use "Add Folder to Workspace" to include the `Pico` directory.
 
 Your workspace should now contain the base and `Pico` folders.
@@ -173,7 +173,7 @@ If everything is set up correctly, GDB and OpenOCD will start, flash your firmwa
 
 ![vsc-compile.png](images/gdbserver.png){width=640}
 
-To monitor GA/TAS output via serial:
+To monitor GATAS output via serial:
 
 ```bash
 minicom -D /dev/cu.usbmodem14102

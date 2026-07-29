@@ -1,0 +1,24 @@
+---
+import DocsLayout from '../layouts/DocsLayout.astro';
+import { docs } from '../data/navigation';
+
+const modules = import.meta.glob('../content/docs/*.md', { eager: true });
+
+export function getStaticPaths() {
+  return docs
+    .filter((page) => page.slug)
+    .map((page) => ({
+      params: { slug: page.slug },
+      props: { page },
+    }));
+}
+
+const { page } = Astro.props;
+const key = `../content/docs/${page.source}`;
+const module = modules[key] as { default: any };
+const Content = module.default;
+---
+
+<DocsLayout currentSlug={page.slug} title={page.title} description={page.description}>
+  <Content />
+</DocsLayout>

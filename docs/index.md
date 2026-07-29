@@ -1,14 +1,14 @@
-# GA/TAS Conspicuity Device
+# GATAS Conspicuity Device
 
 !!! Disclaimer
       **Use at Your Own Risk**      
-      GA/TAS is provided "as is," without any warranties.  
+      GATAS is provided "as is," without any warranties.  
       By downloading or using this device, you acknowledge that you do so at your own risk.  
       The creators are not liable for any damages or issues resulting from its use.  
-      GA/TAS is intended for General Aviation only and should not be relied upon as the sole source of traffic or navigation information.  
+      GATAS is intended for General Aviation only and should not be relied upon as the sole source of traffic or navigation information.  
       Users are responsible for ensuring compliance with local aviation regulations.
 
-The GA/TAS Conspicuity device is designed for General Aviation pilots flying in areas where multiple protocols, such as OGN, Flarm, ADS-L, and FANET, are used. It can transmit and receive multiple protocols simultaneously (excluding sending ADS-B) using one or more transceiver modules. All received traffic is sent to your Electronic Flight Bag (EFB), such as SkyDemon, via the GLD90 protocol.
+The GATAS Conspicuity device is designed for General Aviation pilots flying in areas where multiple protocols, such as OGN, Flarm, ADS-L, and FANET, are used. It can transmit and receive multiple protocols simultaneously (excluding sending ADS-B) using one or more transceiver modules. All received traffic is sent to your Electronic Flight Bag (EFB), such as SkyDemon, via the GLD90 protocol.
 
 The device is built around the Raspberry Pi Pico 2040 and can be configured with a custom PCB that supports either two transceivers or a simpler configuration with one. In both setups, it can send and receive all protocols using time-sharing technology. The device can store configurations for multiple aircraft, which can be selected through an easy-to-use web interface.
 
@@ -22,7 +22,7 @@ Powered by a Li-Ion battery, the device includes a PCB with a USB-C charger. The
 - ![Pulse materials](images/gatas-Pulse/2.png){width=320}
 </div>
 
-[Build Instructions for GA/TAS Pulse](./gatas-Pulse.md)
+[Build Instructions for GATAS Pulse](./gatas-Pulse.md)
 
 ---
 
@@ -44,7 +44,7 @@ Most libraries are used "as-is." Some of them have been slightly modified for pe
 1. **Raspberry Pi Pico SDK**  
    [https://github.com/raspberrypi/pico-sdk](https://github.com/raspberrypi/pico-sdk)
 2. **FreeRTOS**  
-   GA/TAS uses tasks and timers, avoids loops, and runs in multi-core SMP mode.  
+   GATAS uses tasks and timers, avoids loops, and runs in multi-core SMP mode.  
    [https://www.freertos.org](https://www.freertos.org)
 3. **LWiP**  
    A powerful yet sometimes confusing TCP/IP protocol suite.  
@@ -66,12 +66,12 @@ Most libraries are used "as-is." Some of them have been slightly modified for pe
 
 
 !!! INFO
-      **GA/TAS is an ongoing project** that is continuously being developed and improved.  
+      **GATAS is an ongoing project** that is continuously being developed and improved.  
       As a result, features, functionality, and performance may be updated or modified at any time without prior notice.  
       We value feedback and collaboration!  
       If you have any questions, suggestions, or concerns, feel free to reach out.  
       Your input helps us improve the project and ensure it meets the needs of the community.
 
-If you require further assistance or have specific questions about the GA/TAS PULSE firmware, soldering process, or case design, please refer to the project's GitHub repository or contact the maintainers directly.
+If you require further assistance or have specific questions about the GATAS PULSE firmware, soldering process, or case design, please refer to the project's GitHub repository or contact the maintainers directly.
 
 ---

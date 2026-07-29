@@ -1,0 +1,28 @@
+{
+  "name": "aeroclub-maritime",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node scripts/generate-responsive-images.mjs && ASTRO_TELEMETRY_DISABLED=1 astro dev",
+    "start": "npm run dev",
+    "build": "node scripts/generate-responsive-images.mjs && ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/apply-responsive-images.mjs && npm run check:links",
+    "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
+    "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
+    "check:links": "node scripts/check-links.mjs",
+    "migrate": "node scripts/migrate-legacy.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.8",
+    "mermaid": "^11.16.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "astro": "^6.4.8",
+    "cheerio": "^1.1.2",
+    "sharp": "^0.35.2",
+    "turndown": "^7.2.1",
+    "typescript": "^6.0.3"
+  }
+}

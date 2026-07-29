@@ -1,55 +1,44 @@
-name: Build GA/TAS GitHub Pages
+name: Build GATAS GitHub Pages
 on:
   push:
     branches:
       - main
   workflow_dispatch:
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
 jobs:
-  build_mkdocs:
+  build:
     runs-on: ubuntu-latest
 
-    steps:
-      - name: Install pngquant
-        run: sudo apt-get install pngquant
-
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: 3.9
-
-      - run: pip install mkdocs mkdocs-material mkdocs-macros-plugin pymdown-extensions 'mkdocs-material[imaging]'
-
-      - run: |
-          echo "" >> mkdocs.yml
-          echo "site_url: https://rvt.github.io/gatas-doc/" >> mkdocs.yml
-          mkdocs gh-deploy --config-file mkdocs.yml --force
-
-  deploy_mkdocs:
-    needs: build_mkdocs
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
         with:
-          ref: gh-pages
+          node-version: 24
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build Astro site
+        run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: dist
+
+  deploy:
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

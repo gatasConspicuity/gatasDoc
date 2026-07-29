@@ -1,9 +1,9 @@
-# GA/TAS PULSE Builder's Guide
+# GATAS PULSE Builder's Guide
 
-This guide provides step-by-step instructions for setting up GA/TAS.
+This guide provides step-by-step instructions for setting up GATAS.
 
 !!! Tip
-    It's highly recommended to also have the status Led connected, it will give you install feedback on some of the basic state of GA/TAS.
+    It's highly recommended to also have the status Led connected, it will give you install feedback on some of the basic state of GATAS.
 
 ## Use case 1: You want to receive additional traffic data via gatas Connect, you have your EFB running on your phone
 
@@ -17,10 +17,10 @@ flowchart TB
     GATAS <--> |📡 868Mhz| Radio[fa:fa-tower-broadcast FLARM/OGN/ADSL ]
 
 
-    GatasConnect[fa:fa-server GA/TAS Connect]
+    GatasConnect[fa:fa-server GATAS Connect]
     GatasConnect@{ shape: procs }
 
-    GATAS[fa:fa-microchip GA/TAS]
+    GATAS[fa:fa-microchip GATAS]
     GATAS@{ shape: rounded}
 
     Radio[fa:fa-tower-broadcast FLARM/OGN/ADSL]
@@ -31,12 +31,12 @@ flowchart TB
 
 ### Setup
 
-1) In GA/TAS under WIFI Service add your mobile phone's hotspot under *Client Configuration*.
+1) In GATAS under WIFI Service add your mobile phone's hotspot under *Client Configuration*.
 
 ![WIFI Configuration](images/First-Time-Setup/image-2.png)
 
 !!! TIP
-    In Additional to my phone's hotspot I also add my WIFI Network at home so I can configure GA/TAS on my webbrowser on my computer. Since GA/TAS will try connect to any available network in the list. Once a connect drops, it will try other networks seemlessly. When I just drive away from home, it will connect to my hotspot.
+    In Additional to my phone's hotspot I also add my WIFI Network at home so I can configure GATAS on my webbrowser on my computer. Since GATAS will try connect to any available network in the list. Once a connect drops, it will try other networks seemlessly. When I just drive away from home, it will connect to my hotspot.
 
 2) Enable gatasConnect module
 
@@ -51,7 +51,7 @@ flowchart TB
     However, if the other device supports Bluetooth BLE, you can use that to provide NMEA data to your EFB, SkyDemon allows you to do this.
 
 
-## Use case 2: GA/TAS used as hotspot, mobile phone connects to GA/TAS
+## Use case 2: GATAS used as hotspot, mobile phone connects to GATAS
 
 ```mermaid
 flowchart TB
@@ -63,7 +63,7 @@ flowchart TB
     HOTSPOT[fa:fa-mobile-screen-button Mobile Phone Hotspot<br />SkyDemon/ForeFlight/EasyVFR]
     HOTSPOT@{ shape: card}
 
-    GATAS[fa:fa-microchip GA/TAS]
+    GATAS[fa:fa-microchip GATAS]
     GATAS@{ shape: rounded}
 
     Radio[fa:fa-tower-broadcast FLARM/OGN/ADSL]
@@ -78,9 +78,9 @@ flowchart TB
 
 !!! warning
     **No Internet ADS-B**
-    In this situation GA/TAS will not provide any internet traffic data for MLAT and ADSB-OUT
+    In this situation GATAS will not provide any internet traffic data for MLAT and ADSB-OUT
 
-## Use case 3: Mobile router used as hotspot, GA/TAS connects to hotspot, Mobile Phone connects to hotspot.
+## Use case 3: Mobile router used as hotspot, GATAS connects to hotspot, Mobile Phone connects to hotspot.
 
 ```mermaid
 flowchart TD
@@ -97,7 +97,7 @@ flowchart TD
     PHONE[fa:fa-mobile-screen-button Phone<br />SkyDemon/ForeFlight/EasyVFR]
     PHONE@{ shape: card}
 
-    GATAS[fa:fa-microchip GA/TAS]
+    GATAS[fa:fa-microchip GATAS]
     GATAS@{ shape: rounded}
 
     Radio[fa:fa-tower-broadcast FLARM/OGN/ADSL]
@@ -112,7 +112,7 @@ Setup is exactly as in **Use case 1**
 
 ## Use case 4: Groundstation mode
 
-In groundstation mode, GA/TAS is installed at an airfield and acts as a stationary transmitter. It receives traffic data via gatasConnect (typically MLAT data) over Wi-Fi and rebroadcasts it over ADS-L O-Band for up to 10 aircraft in the vicinity.
+In groundstation mode, GATAS is installed at an airfield and acts as a stationary transmitter. It receives traffic data via gatasConnect (typically MLAT data) over Wi-Fi and rebroadcasts it over ADS-L O-Band for up to 10 aircraft in the vicinity.
 
 ### Regular airfield
 
@@ -132,7 +132,7 @@ flowchart TB
     ROUTER[fa:fa-wifi Router / Hotspot]
     ROUTER@{ shape: card }
 
-    GATAS[fa:fa-microchip GA/TAS<br />Groundstation Mode]
+    GATAS[fa:fa-microchip GATAS<br />Groundstation Mode]
     GATAS@{ shape: rounded}
 
     Aircraft1[fa:fa-plane Aircraft with ADS-L]
@@ -143,7 +143,7 @@ flowchart TB
 
 ### Setup
 
-1) Connect GA/TAS to a Wi-Fi network with internet access under *Client Configuration* in the WIFI Service.
+1) Connect GATAS to a Wi-Fi network with internet access under *Client Configuration* in the WIFI Service.
 
 2) Enable the gatasConnect module and configure it with a pincode.
 
@@ -170,7 +170,7 @@ flowchart TB
     ROUTER[fa:fa-wifi Router / Hotspot]
     ROUTER@{ shape: card }
 
-    GATAS[fa:fa-microchip GA/TAS<br />Groundstation Mode<br />Glider Field Altitude Set]
+    GATAS[fa:fa-microchip GATAS<br />Groundstation Mode<br />Glider Field Altitude Set]
     GATAS@{ shape: rounded}
 
     Aircraft1[fa:fa-plane Aircraft with ADS-L]

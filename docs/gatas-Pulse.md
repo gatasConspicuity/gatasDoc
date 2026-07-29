@@ -1,10 +1,10 @@
-# GA/TAS PULSE Builder's Guide
+# GATAS PULSE Builder's Guide
 
-GA/TAS Pulse is an easy to build with standard component version that has all the capabilities of GA/TAS,
+GATAS Pulse is an easy to build with standard component version that has all the capabilities of GATAS,
 except it only uses one Tranceiver (SX1262) instead of two. It will still send and receive all the protocols and when a specific protocol is received, it will prioritice listing to protocols it receives. With a build in charger and a battery lifetime of around 20Hours it is the ideal no worries companion Traffic Awareness system.
 
 
-![GA/TAS Pulse in an Aquila A210](images/gatas-Pulse/1.png){width=800}
+![GATAS Pulse in an Aquila A210](images/gatas-Pulse/1.png){width=800}
 
 !!! info
       The case and design are under constant refinement so it can be that the case is slightly different than shown in the pictures. However, the pins and schematic will always be correct.
@@ -15,7 +15,7 @@ This document provides step-by-step instructions to:
 
 - Solder the necessary header pins onto the Pico.  
 - 3D print and assemble a protective case for the device.
-- Flash the GA/TAS firmware onto a Raspberry Pico.
+- Flash the GATAS firmware onto a Raspberry Pico.
 - Final soldering of charger, battery and switch
 
 ## Prerequisites
@@ -68,7 +68,7 @@ Use this document: [Firmware Installation](Firmware-Install.md)
 
 ### 2.1: Obtain the Case Design Files
 
-1. Visit the [GA/TAS GitHub Repository](https://github.com/rvt/openace).
+1. Visit the [GATAS GitHub Repository](https://github.com/rvt/openace).
 2. Navigate to the `enclosure/gatas` directory to find the `.stl` files for the case design.
 3. Download the necessary `.stl` files to your computer.
 
@@ -202,11 +202,11 @@ Once GPS lock is acquired, both the led of the GPS (red) and Raspberry PICO (Gre
 - Work slowly and double-check everything. I have never broken a device myself, even when I swapped a wire, but it's better to be safe than sorry.
 - When storing the device for a long period, the battery should be charged to 60–80%. Ideally, it should never be stored with an empty battery.
 
-- [GA/TAS GitHub Repository](https://github.com/rvt/openace): Access source code, documentation, and updates.
+- [GATAS GitHub Repository](https://github.com/rvt/openace): Access source code, documentation, and updates.
 - [Raspberry Pi Pico Documentation](https://www.raspberrypi.com/documentation/microcontrollers/): Learn more about the Pico's features and capabilities.
 
 ---
 
-If you require further assistance or have specific questions about the GA/TAS PULSE firmware, soldering process, or case design, please refer to the project's GitHub repository or contact the maintainers directly on [Discord](https://discord.gg/J6mXTcWndS)
+If you require further assistance or have specific questions about the GATAS PULSE firmware, soldering process, or case design, please refer to the project's GitHub repository or contact the maintainers directly on [Discord](https://discord.gg/J6mXTcWndS)
 
 ---

@@ -1,0 +1,11 @@
+---
+import Home from '../content/docs/index.md';
+import DocsLayout from '../layouts/DocsLayout.astro';
+import { docs } from '../data/navigation';
+
+const page = docs.find((item) => item.slug === '')!;
+---
+
+<DocsLayout currentSlug={page.slug} title={page.title} description={page.description}>
+  <Home />
+</DocsLayout>

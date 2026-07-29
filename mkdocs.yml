@@ -53,7 +53,7 @@ nav:
   - Home: 
       - index.md
       - Pulse Builder's Guide: gatas-Pulse.md
-      - GA/TAS Connect: gatas-Connect.md
+      - GATAS Connect: gatas-Connect.md
       - First Time Firmware: Firmware-Install.md
       - Setup Instructions: First-Time-Setup.md
       - Update Firmware: Update-Firmware.md

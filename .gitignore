@@ -1,4 +1,16 @@
 .idea/
 *.iml
+
+# Operating-system and editor files
+.DS_Store
+*.code-workspace
+
+# Local caches and installed dependencies
+.cache/
+.astro/
+node_modules/
+
+# Generated website output
+dist/
 site/
-.cache
+public/_generated/

@@ -1,0 +1,134 @@
+---
+import { baseUrl, hrefFor } from '../data/navigation';
+---
+
+<header class="site-header">
+  <div class="header-inner">
+    <button
+      class="menu-toggle"
+      type="button"
+      aria-label="Open documentation menu"
+      aria-controls="site-sidebar"
+      aria-expanded="false"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <a class="brand" href={hrefFor('')} aria-label="GATAS documentation home">
+      <img src={`${baseUrl}brand/gatas-logo.png`} alt="GATAS" width="512" height="128" />
+      <span>Docs</span>
+    </a>
+
+    <div class="search-wrap">
+      <label class="search-box" for="site-search">
+        <span aria-hidden="true">⌕</span>
+        <input
+          id="site-search"
+          type="search"
+          placeholder="Search GATAS docs"
+          autocomplete="off"
+          aria-label="Search GATAS documentation"
+          aria-controls="search-results"
+          aria-expanded="false"
+        />
+        <kbd>/</kbd>
+      </label>
+      <div id="search-results" class="search-results" role="listbox" hidden></div>
+    </div>
+
+    <a class="github-link" href="https://github.com/rvt/OpenAce" target="_blank" rel="noreferrer">
+      <span>GitHub</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </div>
+</header>
+
+<script is:inline define:vars={{ baseUrl }}>
+  const search = document.querySelector('#site-search');
+  const results = document.querySelector('#search-results');
+  let index = [];
+
+  const closeResults = () => {
+    if (!(search instanceof HTMLInputElement) || !(results instanceof HTMLElement)) return;
+    results.hidden = true;
+    search.setAttribute('aria-expanded', 'false');
+  };
+
+  const renderResults = () => {
+    if (!(search instanceof HTMLInputElement) || !(results instanceof HTMLElement)) return;
+    const query = search.value.trim().toLowerCase();
+    if (!query) {
+      closeResults();
+      return;
+    }
+
+    const matches = index
+      .map((item) => {
+        const title = item.title.toLowerCase();
+        const description = item.description.toLowerCase();
+        const content = item.content.toLowerCase();
+        const score =
+          (title.includes(query) ? 10 : 0) +
+          (title.startsWith(query) ? 5 : 0) +
+          (description.includes(query) ? 4 : 0) +
+          (content.includes(query) ? 1 : 0);
+        return { ...item, score };
+      })
+      .filter((item) => item.score > 0)
+      .sort((a, b) => b.score - a.score || a.order - b.order)
+      .slice(0, 7);
+
+    results.replaceChildren();
+    if (!matches.length) {
+      const empty = document.createElement('p');
+      empty.className = 'search-empty';
+      empty.textContent = `No results for “${search.value.trim()}”`;
+      results.append(empty);
+    } else {
+      for (const item of matches) {
+        const link = document.createElement('a');
+        link.href = `${baseUrl}${item.slug ? `${item.slug}/` : ''}`;
+        link.setAttribute('role', 'option');
+        const title = document.createElement('strong');
+        title.textContent = item.title;
+        const description = document.createElement('span');
+        description.textContent = item.description;
+        link.append(title, description);
+        results.append(link);
+      }
+    }
+    results.hidden = false;
+    search.setAttribute('aria-expanded', 'true');
+  };
+
+  fetch(`${baseUrl}search-index.json`)
+    .then((response) => response.json())
+    .then((data) => {
+      index = data;
+    })
+    .catch(() => {
+      index = [];
+    });
+
+  search?.addEventListener('input', renderResults);
+  search?.addEventListener('focus', renderResults);
+  search?.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeResults();
+      search.blur();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === '/' && document.activeElement !== search) {
+      event.preventDefault();
+      search?.focus();
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!(event.target instanceof Node) || !event.target.parentElement?.closest('.search-wrap')) {
+      closeResults();
+    }
+  });
+</script>

@@ -1,0 +1,140 @@
+---
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
+import { baseUrl, docs, hrefFor } from '../data/navigation';
+
+interface Props {
+  currentSlug: string;
+  title: string;
+  description: string;
+}
+
+const { currentSlug, title, description } = Astro.props;
+const pageIndex = docs.findIndex((page) => page.slug === currentSlug);
+const previous = pageIndex > 0 ? docs[pageIndex - 1] : undefined;
+const next = pageIndex >= 0 && pageIndex < docs.length - 1 ? docs[pageIndex + 1] : undefined;
+const canonical = new URL(`${baseUrl}${currentSlug ? `${currentSlug}/` : ''}`, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#0b2239" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href={`${baseUrl}brand/gatas-logo.png`} />
+    <title>{title} | GATAS Documentation</title>
+  </head>
+  <body style={`--brand-watermark: url("${baseUrl}brand/gatas-logo.png")`}>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <Header />
+    <div class="docs-shell">
+      <Sidebar currentSlug={currentSlug} />
+      <main id="main-content" class="main-content">
+        <article class:list={['article', { 'article-home': currentSlug === '' }]}>
+          <p class="eyebrow">GATAS documentation</p>
+          <slot />
+          <nav class="page-pagination" aria-label="Previous and next pages">
+            {previous ? (
+              <a class="previous" href={hrefFor(previous.slug)}>
+                <span>Previous</span>
+                <strong>← {previous.title}</strong>
+              </a>
+            ) : <span></span>}
+            {next && (
+              <a class="next" href={hrefFor(next.slug)}>
+                <span>Next</span>
+                <strong>{next.title} →</strong>
+              </a>
+            )}
+          </nav>
+        </article>
+        <footer class="site-footer">
+          <p>GATAS · General Aviation Traffic Awareness System</p>
+          <a href="https://github.com/rvt/OpenAce" target="_blank" rel="noreferrer">View project on GitHub ↗</a>
+        </footer>
+      </main>
+    </div>
+
+    <script>
+      const toggle = document.querySelector('.menu-toggle');
+      const sidebar = document.querySelector('#site-sidebar');
+      const scrim = document.querySelector('.sidebar-scrim');
+      const closeMenu = () => {
+        document.body.classList.remove('menu-open');
+        toggle?.setAttribute('aria-expanded', 'false');
+      };
+      toggle?.addEventListener('click', () => {
+        const open = document.body.classList.toggle('menu-open');
+        toggle.setAttribute('aria-expanded', String(open));
+      });
+      scrim?.addEventListener('click', closeMenu);
+      sidebar?.querySelectorAll('a').forEach((link) => link.addEventListener('click', closeMenu));
+
+      const renderFlowcharts = async () => {
+        const blocks = Array.from(
+          document.querySelectorAll<HTMLPreElement>('pre[data-language="mermaid"]'),
+        );
+        if (!blocks.length) return;
+
+        const { default: mermaid } = await import('mermaid');
+        mermaid.initialize({
+          startOnLoad: false,
+          securityLevel: 'loose',
+          theme: 'base',
+          fontFamily: 'Manrope, Inter, ui-sans-serif, system-ui, sans-serif',
+          flowchart: {
+            htmlLabels: true,
+            curve: 'basis',
+            useMaxWidth: true,
+          },
+          themeVariables: {
+            primaryColor: '#eef8fe',
+            primaryTextColor: '#172b3e',
+            primaryBorderColor: '#1494df',
+            lineColor: '#5d7185',
+            secondaryColor: '#f6f9fb',
+            tertiaryColor: '#ffffff',
+            clusterBkg: '#f6f9fb',
+            clusterBorder: '#d7e1e8',
+            edgeLabelBackground: '#ffffff',
+            fontSize: '15px',
+          },
+        });
+
+        for (const [index, block] of blocks.entries()) {
+          const source = block.textContent?.trim();
+          if (!source) continue;
+
+          try {
+            const { svg, bindFunctions } = await mermaid.render(`gatas-flowchart-${index}`, source);
+            const diagram = document.createElement('div');
+            const heading = block.previousElementSibling?.closest('h2, h3, h4');
+            diagram.className = 'flowchart';
+            diagram.setAttribute('role', 'img');
+            diagram.setAttribute(
+              'aria-label',
+              heading?.textContent ? `Flowchart for ${heading.textContent}` : 'GATAS setup flowchart',
+            );
+            diagram.innerHTML = svg;
+            block.replaceWith(diagram);
+            bindFunctions?.(diagram);
+          } catch (error) {
+            block.classList.add('flowchart-source');
+            block.insertAdjacentHTML(
+              'beforebegin',
+              '<p class="flowchart-error">This flowchart could not be rendered. Its source is shown below.</p>',
+            );
+            console.warn('Unable to render Mermaid flowchart', error);
+          }
+        }
+      };
+
+      renderFlowcharts();
+    </script>
+  </body>
+</html>
