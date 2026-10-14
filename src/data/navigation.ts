@@ -49,12 +49,20 @@ export const docs: DocPage[] = [
     order: 5,
   },
   {
+    source: 'BMP280.md',
+    slug: 'bmp280',
+    title: 'Add a BMP280',
+    description: 'Wire, configure and calibrate a BMP280 pressure sensor on GATAS Pulse.',
+    section: 'Build & configure',
+    order: 6,
+  },
+  {
     source: 'gatas-Connect.md',
     slug: 'gatas-connect',
     title: 'GATAS Connect',
     description: 'Add internet-sourced ADS-B and MLAT traffic to your GATAS device.',
     section: 'Build & configure',
-    order: 6,
+    order: 7,
   },
   {
     source: 'All modules explained.md',
@@ -62,7 +70,7 @@ export const docs: DocPage[] = [
     title: 'All modules',
     description: 'Understand every GATAS service, configuration option and dependency.',
     section: 'Reference',
-    order: 7,
+    order: 8,
   },
   {
     source: 'FAQ.md',
@@ -70,7 +78,7 @@ export const docs: DocPage[] = [
     title: 'Frequently asked questions',
     description: 'Answers about Wi-Fi, GPS, LED patterns, DDB and EFB connectivity.',
     section: 'Reference',
-    order: 8,
+    order: 9,
   },
   {
     source: 'For-Developers.md',
@@ -78,7 +86,7 @@ export const docs: DocPage[] = [
     title: 'For developers',
     description: 'Build, debug and modify the GATAS firmware and development environment.',
     section: 'Reference',
-    order: 9,
+    order: 10,
   },
   {
     source: 'License.md',
@@ -86,7 +94,7 @@ export const docs: DocPage[] = [
     title: 'License',
     description: 'Review the software license that applies to the GATAS project.',
     section: 'Reference',
-    order: 10,
+    order: 11,
   },
 ];
 

@@ -9,8 +9,7 @@
     "build": "node scripts/generate-responsive-images.mjs && ASTRO_TELEMETRY_DISABLED=1 astro check && ASTRO_TELEMETRY_DISABLED=1 astro build && node scripts/apply-responsive-images.mjs && npm run check:links",
     "preview": "ASTRO_TELEMETRY_DISABLED=1 astro preview",
     "check": "ASTRO_TELEMETRY_DISABLED=1 astro check",
-    "check:links": "node scripts/check-links.mjs",
-    "migrate": "node scripts/migrate-legacy.mjs"
+    "check:links": "node scripts/check-links.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "^5.2.8",
