@@ -6,7 +6,7 @@ import { rehypeBasePaths } from './src/utils/rehypeBasePaths.mjs';
 const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
-  site: 'https://rvt.github.io',
+  site: 'https://gatasconspicuity.github.io/gatasDoc/',
   base: isGitHubPages ? '/gatas-doc' : '/',
   output: 'static',
   integrations: [sitemap()],
