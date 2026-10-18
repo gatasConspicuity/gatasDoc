@@ -3,7 +3,7 @@ import path from 'node:path';
 import { load } from 'cheerio';
 
 const dist = path.resolve('dist');
-const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '/gatas-doc' : '';
+const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '//gatasDoc/' : '';
 const htmlFiles = [];
 
 const walk = (directory) => {
