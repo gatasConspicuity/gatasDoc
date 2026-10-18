@@ -5,7 +5,7 @@ import { load } from 'cheerio';
 const root = process.cwd();
 const distDir = path.join(root, 'dist');
 const manifestPath = path.join(root, 'public', '_generated', 'images', 'manifest.json');
-const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '/gatasDoc//' : '';
+const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '/gatasDoc' : '';
 const withBase = (value) => `${basePrefix}${value}`;
 
 const normalizePublicPath = (value) => {

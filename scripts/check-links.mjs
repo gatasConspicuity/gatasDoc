@@ -3,7 +3,7 @@ import path from 'node:path';
 import { load } from 'cheerio';
 
 const dist = path.resolve('dist');
-const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '/gatasDoc//' : '';
+const basePrefix = process.env.GITHUB_ACTIONS === 'true' ? '/gatasDoc' : '';
 const htmlFiles = [];
 
 const walk = (directory) => {
@@ -41,12 +41,6 @@ for (const file of htmlFiles) {
   $('[href], [src]').each((_, element) => {
     const value = $(element).attr('href') ?? $(element).attr('src');
     if (!value || /^(https?:|mailto:|tel:|data:|#|javascript:)/.test(value)) return;
-    if (basePrefix && value.startsWith(basePrefix) && !value.startsWith(`${basePrefix}/`)) {
-      const references = missing.get(value) ?? [];
-      references.push(path.relative(dist, file));
-      missing.set(value, references);
-      return;
-    }
     const pathname = new URL(value, 'https://www.aeroclubmaritime.com').pathname;
     if (!existsForUrl(pathname)) {
       const references = missing.get(pathname) ?? [];
