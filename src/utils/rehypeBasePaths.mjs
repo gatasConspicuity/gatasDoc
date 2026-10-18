@@ -1,4 +1,4 @@
-const base = process.env.GITHUB_ACTIONS === 'true' ? '//gatasDoc/' : '';
+const base = process.env.GITHUB_ACTIONS === 'true' ? '/gatasDoc//' : '';
 
 const visit = (node) => {
   if (!node || typeof node !== 'object') return;

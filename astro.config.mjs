@@ -7,7 +7,7 @@ const isGitHubPages = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
   site: 'https://gatasconspicuity.github.io/gatasDoc/',
-  base: isGitHubPages ? '//gatasDoc/' : '/',
+  base: isGitHubPages ? '/gatasDoc//' : '/',
   output: 'static',
   integrations: [sitemap()],
   markdown: {
